@@ -24,7 +24,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.delegate = self
         
         //setting other properties
-        imagePicker.sourceType = .photoLibrary  //brings up a UIImagePicker that contains the camera module to allow the user to take an image using the front or rear camera
+        imagePicker.sourceType = .camera  //brings up a UIImagePicker that contains the camera module to allow the user to take an image using the front or rear camera
         imagePicker.allowsEditing = false   //boolean val. whether the user is allowed to edit a selected image or movie.
 
         
@@ -76,7 +76,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 fatalError("model failed to process image")
             }
             
-            print(results)
+            //print(results) //results that we get after classification
+            
+            // the first result has the most confidence
+            // CHANGE THE ARGUMENT PASSED TO THE CONTAINS METHOD AS DESIRED
+            /*if let firstResult = results.first{
+                if firstResult.identifier.contains("hotdog"){
+                    self.navigationItem.title = "HotDog! :D"
+                }else{
+                    self.navigationItem.title = "NOT HotDog! D:"
+                }
+            }*/
+            let firstResult = results.first
+            self.navigationItem.title = firstResult?.identifier
         }
         
         // creating a handlrer that specifies the image to be calssified
