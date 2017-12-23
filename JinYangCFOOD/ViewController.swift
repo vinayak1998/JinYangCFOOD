@@ -87,6 +87,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     self.navigationItem.title = "NOT HotDog! D:"
                 }
             }*/
+            
+            //COMMENT OUT THESE 2 LINES IF UNCOMMENTING THE ABOVE CODE
             let firstResult = results.first
             self.navigationItem.title = firstResult?.identifier
         }
